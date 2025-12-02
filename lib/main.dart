@@ -50,6 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: [
             priceTextField(),
+            Text("Change Calculation", style: TextStyle(fontFamily: 'maa', fontSize: 24),),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: amountTextField(),
