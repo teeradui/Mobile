@@ -49,15 +49,18 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
-            priceTextField(),
             Text("Calculate", 
               style: 
                 TextStyle(fontFamily: 'maa', 
                 fontSize: 48,
                 fontWeight: FontWeight.bold,
-                color: Colors.blue,
-                backgroundColor: Colors.pink,),
+                color: Colors.pink,
+                backgroundColor: const Color.fromARGB(255, 255, 156, 189),),
                 ),
+            SizedBox(height: 20),
+            Image.asset("assets/kitty.jpg", width: 150, height: 150,),
+            SizedBox(height: 10),
+            priceTextField(),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: amountTextField(),

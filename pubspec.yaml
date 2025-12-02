@@ -57,10 +57,17 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  assets:
+    - assets/cat.jpg
+    - assets/food.jpg
+    - assets/kitty.jpg
+
   fonts:
     - family: maa
       fonts:
         - asset: "fonts/maaja ver 1.00.ttf"
+
+  
 
   # To add assets to your application, add an assets section, like this:
   # assets:
