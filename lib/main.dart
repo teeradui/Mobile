@@ -59,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
             SizedBox(height: 20),
             Image.asset("assets/kitty.jpg", width: 100,height: 100,),
-            Image.network('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXp3b3NpbzJiYTlxN2xibmVraHltMzJseHd5eHNubDRsN2F6N2R0cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wsUuw16j6oyxLLRnnK/giphy.gif' , height: 100, width: 100,),
+            Image.network('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXp3b3NpbzJiYTlxN2xibmVraHltMzJseHd5eHNubDRsN2F6N2R0cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wsUuw16j6oyxLLRnnK/giphy.gif' , height: 70, width: 70,),
             SizedBox(height: 10),
             priceTextField(),
             Padding(
