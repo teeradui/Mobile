@@ -17,15 +17,13 @@ class _CalculatePageState extends State<CalculatePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text("teerady"),
-      ),
+      
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: ListView(
           children: [
-            Text("Calculate", 
+            Text("Calculate",
+            textAlign: TextAlign.center, 
               style: 
                 TextStyle(fontFamily: 'maa', 
                 fontSize: 48,
@@ -33,8 +31,9 @@ class _CalculatePageState extends State<CalculatePage> {
                 color: Colors.pink,
                 backgroundColor: const Color.fromARGB(255, 255, 156, 189),),
                 ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             Image.asset("assets/kitty.jpg", width: 100,height: 100,),
+            SizedBox(height: 10),
             Image.network('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXp3b3NpbzJiYTlxN2xibmVraHltMzJseHd5eHNubDRsN2F6N2R0cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wsUuw16j6oyxLLRnnK/giphy.gif' , height: 70, width: 70,),
             SizedBox(height: 10),
             priceTextField(),
@@ -53,7 +52,7 @@ class _CalculatePageState extends State<CalculatePage> {
             changeCalculateButton(),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: showChangeText(),
+              child: showChangeText(), 
             ),
           ],
         ),
@@ -105,7 +104,7 @@ class _CalculatePageState extends State<CalculatePage> {
   }
 
   Widget showTotalText() {
-    return Text("total : $_total Baht");
+    return Text("total : $_total Baht", textAlign: TextAlign.center, );
   }
 
   Widget receiveMoneyTextField() {
@@ -136,6 +135,6 @@ class _CalculatePageState extends State<CalculatePage> {
   }
 
   Widget showChangeText() {
-    return Text("Change : $_change Baht");
+    return Text("Change : $_change Baht", textAlign: TextAlign.center, );
   }
 }

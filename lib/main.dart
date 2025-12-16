@@ -1,3 +1,6 @@
+import 'package:fistapp/pages/calc.dart';
+import 'package:fistapp/pages/contact.dart';
+import 'package:fistapp/pages/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -32,130 +35,35 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var price = TextEditingController();
-  var amount = TextEditingController();
-  var change = TextEditingController();
-  double _total = 0;
-  double _change = 0;
-
+  int _currentIndex = 0;
+  final tabs = [HomePage(), CalculatePage(), ContactPage()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: Text("Duidui calculator"),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: ListView(
-          children: [
-            Text("Calculate", 
-              style: 
-                TextStyle(fontFamily: 'maa', 
-                fontSize: 48,
-                fontWeight: FontWeight.bold,
-                color: Colors.pink,
-                backgroundColor: const Color.fromARGB(255, 255, 156, 189),),
-                ),
-            SizedBox(height: 20),
-            Image.asset("assets/kitty.jpg", width: 100,height: 100,),
-            Image.network('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXp3b3NpbzJiYTlxN2xibmVraHltMzJseHd5eHNubDRsN2F6N2R0cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wsUuw16j6oyxLLRnnK/giphy.gif' , height: 70, width: 70,),
-            SizedBox(height: 10),
-            priceTextField(),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: amountTextField(),
-            ),
-            SizedBox(height: 10),
-            calculateButton(),
-            Padding(padding: const EdgeInsets.all(8.0), child: showTotalText()),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: receiveMoneyTextField(),
-            ),
-            SizedBox(height: 10),
-            changeCalculateButton(),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: showChangeText(),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget priceTextField() {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: TextField(
-        controller: price,
-        decoration: const InputDecoration(
-          border: OutlineInputBorder(),
-          labelText: 'Price per item',
-        ),
-        keyboardType: TextInputType.number,
-      ),
-    );
-  }
-
-  Widget amountTextField() {
-    return Padding(
-      padding: const EdgeInsets.all(0.0),
-      child: TextField(
-        controller: amount,
-        decoration: const InputDecoration(
-          border: OutlineInputBorder(),
-          labelText: 'Amount of items',
-        ),
-        keyboardType: TextInputType.number,
-      ),
-    );
-  }
-
-  Widget calculateButton() {
-    return ElevatedButton(
-      onPressed: () {
-        if (price.text.isNotEmpty && amount.text.isNotEmpty) {
+      body: tabs[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: (index) {
           setState(() {
-            _total = double.parse(price.text) * double.parse(amount.text);
+            _currentIndex = index;
           });
-        }
-      },
-      child: Text("Calculate Total"),
-    );
-  }
-
-  Widget showTotalText() {
-    return Text("total : $_total Baht");
-  }
-
-  Widget receiveMoneyTextField() {
-    return Padding(
-      padding: const EdgeInsets.all(0.0),
-      child: TextField(
-        controller: change,
-        decoration: const InputDecoration(
-          border: OutlineInputBorder(),
-          labelText: 'Get Money',
-        ),
-        keyboardType: TextInputType.number,
+        },
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calculate),
+            label: 'Calculation',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.contact_mail),
+            label: 'Contact',
+          ),
+        ],
       ),
     );
-  }
-
-  Widget changeCalculateButton() {
-    return ElevatedButton(onPressed: () {
-        if (price.text.isNotEmpty && amount.text.isNotEmpty) {
-          setState(() {
-            _change = double.parse(change.text) - _total;
-          });
-        }
-      }, 
-      child: Text("Calculate Change"));
-  }
-
-  Widget showChangeText() {
-    return Text("Change : $_change Baht");
   }
 }
