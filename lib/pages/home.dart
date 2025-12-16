@@ -14,7 +14,8 @@ class _HomePageState extends State<HomePage> {
     return ListView(
       children: const [
         Center(
-          child: Text(  'Welcome to Home Page!'),
+          child: Text(  'Welcome to Home Page!',
+          style: TextStyle(fontSize: 18),),
         )
       ],
     );

@@ -14,7 +14,8 @@ class _ContactPageState extends State<ContactPage> {
     return ListView(
       children: const [
         Center(
-          child: Text(  'email:teerady1112@gmail.com'),
+          child: Text(  'email:teerady1112@gmail.com',
+          style: TextStyle(fontSize: 18),),
         )
       ],
     );
