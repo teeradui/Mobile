@@ -1,37 +1,13 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Teerady shop',
-      theme: ThemeData(
-        colorScheme: .fromSeed(
-          seedColor: const Color.fromARGB(255, 237, 37, 137),
-        ),
-      ),
-      home: const MyHomePage(title: 'Duidui calculator'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+class CalculatePage extends StatefulWidget {
+  const CalculatePage({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  _CalculatePageState createState() => _CalculatePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _CalculatePageState extends State<CalculatePage> {
   var price = TextEditingController();
   var amount = TextEditingController();
   var change = TextEditingController();
@@ -43,7 +19,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: Text("teerady"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -85,6 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+//custom widget
   Widget priceTextField() {
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -112,6 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+
 
   Widget calculateButton() {
     return ElevatedButton(
@@ -145,14 +123,16 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget changeCalculateButton() {
-    return ElevatedButton(onPressed: () {
+    return ElevatedButton(
+      onPressed: () {
         if (price.text.isNotEmpty && amount.text.isNotEmpty) {
           setState(() {
             _change = double.parse(change.text) - _total;
           });
         }
-      }, 
-      child: Text("Calculate Change"));
+      },
+      child: Text("Calculate Change"),
+    );
   }
 
   Widget showChangeText() {
