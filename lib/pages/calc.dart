@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CalculatePage extends StatefulWidget {
-  const CalculatePage({Key? key}) : super(key: key);
+  const CalculatePage({super.key});
 
   @override
   _CalculatePageState createState() => _CalculatePageState();
@@ -17,7 +17,10 @@ class _CalculatePageState extends State<CalculatePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      appBar: AppBar(
+        title: Text("Duidui calculator"),
+        backgroundColor: const Color.fromARGB(255, 255, 156, 189)
+      ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: ListView(
