@@ -35,6 +35,7 @@ class _HomePageState extends State<HomePage> {
                   data[index]['title'],
                   data[index]['subtitle'],
                   data[index]['img_url'],
+                  data[index]['detail'],
                 );
               },
               itemCount: data.length,
@@ -45,13 +46,19 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget MyBox(String title, String subtitle, String img_url) {
+  Widget MyBox(String title, String subtitle, String img_url, String detail) {
+    var v1, v2, v3, v4;
+    v1 = title;
+    v2 = subtitle;
+    v3 = img_url;
+    v4 = detail;
+
     return InkWell(
       borderRadius: BorderRadius.circular(20),
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => DetailPage()),
+          MaterialPageRoute(builder: (context) => DetailPage(v1, v2, v3, v4)),
         );
       },
       child: Container(
@@ -89,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                 print("Next Page");
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => DetailPage()),
+                  MaterialPageRoute(builder: (context) => DetailPage(v1, v2, v3, v4)),
                 );
               },
               child: Text(
