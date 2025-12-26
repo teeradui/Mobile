@@ -62,6 +62,7 @@ flutter:
     - assets/cat.jpg
     - assets/food.jpg
     - assets/kitty.jpg
+    - assets/data.json
 
   fonts:
     - family: maa

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:fistapp/pages/detail.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,26 +21,25 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(24.0),
-        child: ListView(
-          children: [
-            MyBox(
-              "What is Duidui",
-              "Duidui is my work for this class!",
-              "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHg4a3JzZXVsZDFyeDFpbjhqODcwc2QwZWltdGVudHc1bXB6amQ0MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/VKwspRV2pafJu/giphy.gif",
-            ),
-            SizedBox(height: 10),
-            MyBox(
-              "What is Duidui mean",
-              "Duidui doesn't have meaning, it's just a name(❁´◡`❁)",
-              "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExczJpaG5mMGxuM25uZm1hYnM0ZXczYW5ub2d6cTVpYWtpbjJ1bTczNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/GvTSAdT3MjBtWtDpJ0/giphy.gif",
-            ),
-            SizedBox(height: 10),
-            MyBox(
-              "Why Duidui",
-              "Because I like the sound of this name! (｡•̀ᴗ-)✧",
-              "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmN2ZGIzdnJlOGN5N28yOHFzd3F4OGVqMHhjdmdiZjZmcGR6cDc3aiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hHZfOv3tpyItG/giphy.gif",
-            ),
-          ],
+        child: FutureBuilder(
+          future: DefaultAssetBundle.of(context).loadString('assets/data.json'),
+          builder: (context, snapshot) {
+            if (snapshot.data == null) {
+              return const SizedBox();
+            }
+
+            var data = json.decode(snapshot.data.toString());
+            return ListView.builder(
+              itemBuilder: (BuildContext context, int index) {
+                return MyBox(
+                  data[index]['title'],
+                  data[index]['subtitle'],
+                  data[index]['img_url'],
+                );
+              },
+              itemCount: data.length,
+            );
+          },
         ),
       ),
     );
@@ -54,6 +55,7 @@ class _HomePageState extends State<HomePage> {
         );
       },
       child: Container(
+        margin: EdgeInsets.only(top: 10, bottom: 10),
         padding: EdgeInsets.all(20),
         height: 150,
         decoration: BoxDecoration(
